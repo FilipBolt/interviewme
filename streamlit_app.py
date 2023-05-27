@@ -8,8 +8,13 @@ st.set_page_config(
     page_icon=":robot:"
 )
 
+if 'secrets' in st.secrets:
+    api_key = st.secrets['secrets']['api_key']
+else:
+    api_key = st.secrets['api_key']
+
 API_URL = "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill"
-headers = {"Authorization": "Bearer " + st.secrets['secrets']['api_key']}
+headers = {"Authorization": "Bearer " + api_key}
 
 st.header("Semabot")
 # st.markdown("[Github](https://github.com/ai-yash/st-chat)")
